@@ -1,0 +1,8 @@
+.pt contient 
+torch.save({"state_dict": model.state_dict(),  # les poids appris
+            "in_channels": in_ch,              # 7 (nb de canaux)
+            "seq_len": seq_len}, save_path)     # 23 ou 24
+
+ils servent a ce que n'importe qui peut faire load_model(".pt") puis predict(...) sans avoir besoin de réenttrainer
+Dans l'app finale  c'est le membre full-stack qui doit l'appeler depuis l'api 
+ces fonctions se trouvent dans dl_model.py

@@ -27,8 +27,8 @@ import pandas as pd
 # lancé) — ainsi le script fonctionne identiquement chez tout le monde,
 # tant que la structure de dossier "data/" à côté du script est respectée.
 BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = BASE_DIR / "data"
-RESULTS_DIR = BASE_DIR / "results"
+DATA_DIR = BASE_DIR.parent.parent / "data"
+RESULTS_DIR = BASE_DIR.parent.parent / "models"
 
 SEQ_LEN = 23          # 20 nt protospacer + 3 nt PAM
 SEED_LEN = 12          # taille de la "région seed" proximale au PAM
