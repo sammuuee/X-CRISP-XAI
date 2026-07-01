@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+
+# Required only when running the real IA model instead of the demo fallback.
+torch
+numpy
+pandas
+scikit-learn

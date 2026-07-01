@@ -1,0 +1,10 @@
+Le projet : 
+
+X-CRISP-XAI est un outil web qui permet à un biologiste ou clinicien de soumettre une séquence guide ARN et d'obtenir instantanément une prédiction du risque d'effets hors-cible de CRISPR-Cas9, avec des explications visuelles compréhensibles sans être informaticien.
+
+Les missions de base on peut en ajouter mais on va essayer d’éviter donc les missions pris-cipal se situe ici  : 
+
+Mois 1 — Tu conçois la maquette Figma des deux écrans principaux (soumission et résultats), tu mets en place le projet FastAPI avec les routes de base, et tu construis le squelette du frontend avec les zones vides qui seront remplies plus tard.
+Mois 2 — Tu intègres les premières prédictions du modèle ML dans l'interface. Le score de risque s'affiche. La première version de la heatmap apparaît. L'utilisateur peut déjà soumettre une séquence et voir quelque chose.
+Mois 3 — Tu intègres le module XAI complet, tu finalises l'UX, tu corriges les bugs, et tu t'assures que l'interface tourne sans accroc dans les conditions de la démo.
+Demi-mois final — Tu prépares et répètes la démo live. Tu es la personne qui tient le clavier le jour de la présentation.
