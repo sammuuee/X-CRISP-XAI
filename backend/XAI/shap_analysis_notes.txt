@@ -1,0 +1,112 @@
+﻿--- Note 1 ---
+# ML MODEL CHECK
+
+The deep-learning code uses AUPRC and AUROC to evaluate the models, but I did not find the final saved scores in the project.
+
+So, with SHAP alone, we can explain the models, but we cannot prove which one is the best.
+
+To choose the best model, we still need the ML person's AUPRC/AUROC results.
+
+--- Note 2 ---
+# XAI INTERPRETATION - K562
+
+The SHAP plot shows which sequence features influence the K562 model.
+
+The SHAP importance per position plot shows the most important nucleotide positions.
+
+The SHAP vs Attention plot checks if both methods focus on similar positions.
+
+Conclusion: K562 is useful for explaining mismatch predictions, but its real performance must be checked with AUPRC/AUROC.
+
+--- Note 3 ---
+# XAI INTERPRETATION - Hek293t
+
+The SHAP plot shows which features affect the Hek293t model prediction.
+
+The position plot shows where the model finds the sequence most important.
+
+If SHAP and attention have similar peaks, the explanation is more reliable.
+
+Conclusion: Hek293t is useful for cell-line-specific explanation, but we still need performance metrics to judge it.
+
+--- Note 4 ---
+# XAI INTERPRETATION - K562Hek293
+
+This model uses data from both K562 and Hek293t.
+
+The SHAP plots show which positions are important for the combined mismatch model.
+
+The SHAP vs Attention plot shows if both explanations agree.
+
+Conclusion: K562Hek293 may be the best general mismatch model, but this must be confirmed with AUPRC/AUROC.
+
+--- Note 5 ---
+# XAI INTERPRETATION - CIRCLE_seq
+
+CIRCLE_seq is an indel/gap dataset, so it is different from the mismatch datasets.
+
+The SHAP plots show which positions are important for indel prediction.
+
+The SHAP vs Attention plot checks if both explanations focus on the same positions.
+
+Conclusion: CIRCLE_seq is probably the stronger indel model candidate, especially compared with GUIDE-Seq.
+
+--- Note 6 ---
+# XAI INTERPRETATION - GUIDE-Seq
+
+GUIDE-Seq is also an indel/gap dataset.
+
+The SHAP plots show which positions influence this model.
+
+The SHAP vs Attention plot shows whether the explanation is stable.
+
+Conclusion: GUIDE-Seq must be interpreted carefully because it has very few positive examples.
+
+--- Note 7 ---
+# XAI INTERPRETATION - FINAL CONCLUSION
+
+SHAP helps us understand what each model learned.
+
+Attention gives another view of which positions the model focuses on.
+
+If SHAP and attention agree, the explanation is stronger.
+
+Best candidates from XAI view:
+
+- Mismatch: K562Hek293
+- Indel: CIRCLE_seq
+
+But the final best model must be chosen using AUPRC/AUROC from the ML part.
+
+--- Note 8 ---
+# MODEL PERFORMANCE CHECK
+
+This part checks if the saved models work well on the available datasets.
+
+AUPRC is the most important metric here because the datasets are imbalanced.
+
+Important: this is a simple project check using the available data. The best final model should normally be chosen using validation/test results from the ML training part.
+
+--- Note 9 ---
+# MODEL PERFORMANCE RESULT SUMMARY
+
+The best model according to AUPRC is **K562**.
+
+AUPRC ranking:
+
+- K562: 0.9289
+- CIRCLE_seq: 0.7368
+- Hek293t: 0.6741
+- K562Hek293: 0.6664
+- GUIDE-Seq: 0.2991
+
+For this project, AUPRC is more important than AUROC because the datasets are imbalanced, with many negative examples and few positive examples.
+
+Conclusion:
+
+- Best mismatch model: **K562**
+- Best indel model: **CIRCLE_seq**
+- Weakest model: **GUIDE-Seq**, probably because it has only 50 positive examples.
+
+For the XAI part, the most reliable models to focus on are **K562** for mismatch analysis and **CIRCLE_seq** for indel analysis.
+
